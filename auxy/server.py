@@ -19,7 +19,7 @@ def iheart_station(station):
     if 'secure_shoutcast_stream' in streams:
         return redirect(streams['secure_shoutcast_stream'])
     elif 'secure_pls_stream' in streams:
-        pls_response = requests.get(streams['secure_pls_stream'])
+        pls_response = requests.get(streams['secure_pls_stream'].strip())
         parser = ConfigParser()
         parser.read_string(pls_response.text)
         return redirect(parser['playlist']['File1'])
